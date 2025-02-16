@@ -1,0 +1,69 @@
+<div class="main">
+  <p-toast></p-toast>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p-inputgroup>
+      <p-select
+        id="experience"
+        formControlName="experience"
+        [options]="experienceOptions"
+        placeholder="Select Experience"
+      ></p-select>
+    </p-inputgroup>
+
+    <div class="field">
+      <p-multiselect
+        id="skills"
+        [options]="skillOptions"
+        formControlName="skills"
+        placeholder="Select Skills"
+        optionLabel="label"
+        display="chip"
+        styleClass="w-full md:w-100"
+      ></p-multiselect>
+    </div>
+
+    <p-select
+      id="salary"
+      formControlName="salary"
+      [options]="salaryOptions"
+      placeholder="Select Salary"
+    ></p-select>
+
+    <div class="p-col-12">
+      <button
+        type="submit"
+        pButton
+        label="Submit"
+        [disabled]="form.invalid"
+      ></button>
+    </div>
+  </form>
+</div>
+<div class="table">
+  <igx-grid [data]="matchedUser" autoGenerate="false">
+    <igx-column field="name" header="Name"></igx-column>
+    <igx-column field="experience" header="Experience"></igx-column>
+    <igx-column field="expected_salary" header="Expected Salary"></igx-column>
+    <igx-column field="skills" header="Skills"></igx-column>
+    <igx-column
+      field="matchingPercentage"
+      header="Matching Percentage"
+    >
+ <ng-template igxCell let-cell="cell">
+      <igx-circular-bar
+      [value]="cell.value" [max]="100"
+        [animate]="true"
+        class="custom-size"
+      ></igx-circular-bar>
+    </ng-template>
+  </igx-column>
+  <igx-column header="Actions" field="email">
+    <ng-template igxCell let-cell="cell">
+      <button igxButton="outlined" (click)="select(cell.value)">Select</button>
+    </ng-template>
+  </igx-column>
+   
+  </igx-grid>
+
+</div>

@@ -1,0 +1,128 @@
+<div class="container">
+  <!-- Card containing the logo -->
+  <div class="card">
+    <div class="logo">
+      <img
+        src="https://res.cloudinary.com/dc4aobtkq/image/upload/v1738744938/yv6usrvrwa8ozlzodnp4.png"
+        alt="Logo"
+      />
+    </div>
+  </div>
+
+  <!-- Card displaying the number of requests -->
+  <div class="info-card">
+    <h6>Number Of Requests</h6>
+    <p class="value">{{ Length }}</p>
+  </div>
+
+  <!-- Button to open the Add Subscription dialog -->
+  <div class="subscription_bt">
+    <button class="button" (click)="addSubscription()">Add Subscription</button>
+  </div>
+</div>
+
+<!-- Section displaying data and graphical representation -->
+<div class="dataa">
+  <div class="custom-line"></div>
+
+  <!-- Component to show subscription data -->
+  <app-show-data></app-show-data>
+</div>
+
+<div class="custom-line1"></div>
+
+<!-- Graphical Representation -->
+<div class="button-container">
+  <div>
+    <app-graphical></app-graphical>
+
+    <!-- Subscription Dialog -->
+    <div class="addSubscription">
+      <p-dialog
+        [(visible)]="displayDialog"
+        header="Add Subscription"
+        [modal]="true"
+        [closable]="false"
+        [style]="{ width: '450px' }"
+        [contentStyle]="{ padding: '20px' }"
+      >
+        <!-- Subscription Form -->
+        <form [formGroup]="addSubscriptionForm" (ngSubmit)="onSubmit()">
+          
+          <!-- Heading Input Field -->
+          <div class="p-field">
+            <label for="heading">Heading:</label>
+            <input
+              appAutoCapitalize
+              pInputText
+              id="heading"
+              formControlName="heading"
+              placeholder="Enter subscription heading"
+            />
+            <small
+              *ngIf="addSubscriptionForm.get('heading')?.invalid && addSubscriptionForm.get('heading')?.touched"
+              class="error"
+            >
+              Heading is required.
+            </small>
+          </div>
+
+          <!-- Description Input Field -->
+          <div class="p-field">
+            <label for="description">Description:</label>
+            <textarea
+              pInputTextarea
+              id="description"
+              formControlName="description"
+              placeholder="Provide a short description"
+            ></textarea>
+            <small
+              *ngIf="addSubscriptionForm.get('description')?.invalid && addSubscriptionForm.get('description')?.touched"
+              class="error"
+            >
+              Min 10 characters required.
+            </small>
+          </div>
+
+          <!-- Price Input Field -->
+          <div class="p-field">
+            <label for="price">Price ($):</label>
+            <input
+              pInputText
+              type="number"
+              id="price"
+              formControlName="price"
+              placeholder="Enter price"
+            />
+            <small
+              *ngIf="addSubscriptionForm.get('price')?.invalid && addSubscriptionForm.get('price')?.touched"
+              class="error"
+            >
+              Price must be a positive number.
+            </small>
+          </div>
+
+          <!-- Dialog Footer Buttons -->
+          <div class="p-dialog-footer">
+            <button
+              pButton
+              type="submit"
+              label="Submit"
+              icon="pi pi-check"
+              class="p-button-primary"
+              [disabled]="addSubscriptionForm.invalid"
+            ></button>
+            <button
+              pButton
+              type="button"
+              label="Cancel"
+              icon="pi pi-times"
+              class="p-button-secondary"
+              (click)="closeDialog()"
+            ></button>
+          </div>
+        </form>
+      </p-dialog>
+    </div>
+  </div>
+</div>

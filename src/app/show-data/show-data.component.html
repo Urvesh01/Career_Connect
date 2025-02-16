@@ -1,0 +1,155 @@
+<igx-grid
+  #grid
+  [data]="formData"
+  [autoGenerate]="false"
+  width="100%"
+  height="250px"
+  columnWidth="122px"
+  hiddenColumnsText="Hidden"
+  [allowAdvancedFiltering]="true"
+  [allowFiltering]="false"
+>
+  <igx-grid-toolbar>
+    <div>
+      <button
+        class="button"
+        igxButton="contained"
+        [igxToggleAction]="dropdown"
+        [igxDropDownItemNavigation]="dropdown"
+      >
+        Experience
+      </button>
+
+      <igx-drop-down #dropdown>
+        <igx-drop-down-item
+          *ngFor="let item of items"
+          (click)="filter(item.field)"
+        >
+          Filter by {{ item.field }}
+        </igx-drop-down-item>
+      </igx-drop-down>
+
+      <button
+        class="button"
+        igxButton="contained"
+        [igxToggleAction]="dropdown1"
+        [igxDropDownItemNavigation]="dropdown1"
+        type="submit"
+      >
+        Employment
+      </button>
+      <igx-drop-down #dropdown1>
+        <igx-drop-down-item
+          *ngFor="let item of employmentStatus"
+          (click)="filterEmp(item.value)"
+        >
+          {{ item.field }}
+        </igx-drop-down-item>
+      </igx-drop-down>
+    </div>
+    <igx-grid-toolbar-actions>
+      <i class="pi pi-refresh" (click)="refreshdata()"></i>
+
+
+      <igx-grid-toolbar-actions>
+        <igx-grid-toolbar-exporter [exportExcel]="true" [exportCSV]="true">
+        </igx-grid-toolbar-exporter>
+      </igx-grid-toolbar-actions>
+    </igx-grid-toolbar-actions>
+  </igx-grid-toolbar>
+
+  <igx-column
+    [field]="'name'"
+    [header]="'Name'"
+    dataType="string"
+    [sortable]="true"
+    
+  >
+    <ng-template igxCell let-cell="cell">
+    <span appSubscriptionHighlights>
+      {{ cell.value }}
+    </span>
+  </ng-template>
+  </igx-column>
+  <igx-column
+    [field]="'email'"
+    [header]="'Email'"
+    dataType="string"
+    [sortable]="true"
+  >
+
+</igx-column>
+  <igx-column [field]="'gender'" [header]="'Gender'"></igx-column>
+  <igx-column
+    [field]="'dateOfBirth'"
+    [header]="'DOB'"
+    [formatter]="birthdate.bind(this)"
+    dataType="string"
+    [sortable]="true"
+  ></igx-column>
+  <igx-column
+    [field]="'mobileNumbers'"
+    [header]="'Number'"
+    dataType="string"
+    [sortable]="true"
+  ></igx-column>
+  <igx-column
+    [field]="'skills'"
+    [header]="'Skills'"
+    dataType="string"
+    [sortable]="true"
+  ></igx-column>
+  <igx-column
+    [field]="'experience'"
+    [header]="'Experience'"
+    dataType="string"
+    [sortable]="true"
+  ></igx-column>
+  <igx-column
+    [field]="'hobbies'"
+    [header]="'Hobbies'"
+    dataType="string"
+    [sortable]="true"
+  ></igx-column>
+  <igx-column
+    [field]="'employmentStatus'"
+    [header]="'Status'"
+    dataType="string"
+    [sortable]="true"
+  ></igx-column>
+  <igx-column
+    [field]="'expected_salary'"
+    [header]="'ExpectedSalary'"
+    dataType="string"
+    [sortable]="true"
+  ></igx-column>
+  <igx-column
+    [header]="'Action'"
+    [field]="'id'"
+    [dataType]="'string'"
+    [sortable]="true"
+  >
+    <ng-template igxCell let-cell="cell">
+      <button
+        igxButton="flat"
+        (click)="deleteData(cell.value)"
+        class="delete-button"
+      >
+        Delete
+      </button>
+    </ng-template>
+  </igx-column>
+
+  <igx-column [header]="'View'" [dataType]="'string'" [sortable]="true">
+    <ng-template igxCell let-cell="cell">
+      <!-- <p-button icon="'pi pi-eye" (click)="viewdata(cell.row.data)"></p-button> -->
+      <button
+        igxButton="flat"
+        class="view-button"
+        (click)="viewdata(cell.row.data)"
+      >
+        View
+      </button>
+    </ng-template>
+  </igx-column>
+</igx-grid>

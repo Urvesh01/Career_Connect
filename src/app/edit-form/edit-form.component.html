@@ -1,0 +1,130 @@
+<div >
+<form [formGroup]="editform" (ngSubmit)="onSubmit()">
+  <p-floatlabel variant="on">
+    <input pInputText id="name" formControlName="name" autocomplete="off" />
+    <label for="name">Name</label>
+  </p-floatlabel>
+
+  <p-floatlabel variant="on">
+    <input pInputText id="email" formControlName="email" autocomplete="off" />
+    <label for="email">Email</label>
+  </p-floatlabel>
+
+  <div>
+    <label>Gender:</label>
+    <p-radioButton
+      name="gender"
+      value="Male"
+      formControlName="gender"
+    ></p-radioButton>
+    <label for="gender">Male</label>
+    <p-radioButton
+      name="gender"
+      value="Female"
+      formControlName="gender"
+    ></p-radioButton>
+    <label for="gender">Female</label>
+  </div>
+
+  <div>
+    <label for="dateOfBirth">Date of Birth:</label>
+    <p-datepicker formControlName="dateOfBirth" />
+  </div>
+
+  <div formArrayName="mobileNumbers">
+    <label>Mobile Numbers:</label>
+    <div *ngFor="let mobileNumber of mobileNumbers.controls; let i = index">
+      <input [formControlName]="i" type="text" pInputText />
+      <button type="button" (click)="removeMobileNumber(i)">Remove</button>
+    </div>
+    <button type="button" (click)="addMobileNumber()">Add Number</button>
+  </div>
+
+  <div class="horizontal-layout">
+    <label for="skills">Skills:</label>
+    <p-checkbox
+      name="skills"
+      value="JavaScript"
+      formControlName="skills"
+    ></p-checkbox>
+    <label for="skills">JavaScript</label>
+    <p-checkbox
+      name="skills"
+      value="Angular"
+      formControlName="skills"
+    ></p-checkbox>
+    <label for="skills">Angular</label>
+    <p-checkbox
+      name="skills"
+      value="PrimeNG"
+      formControlName="skills"
+    ></p-checkbox>
+    <label for="skills">PrimeNG</label>
+  </div>
+
+  <div class="horizontal-layout">
+    <label for="hobbies">Hobbies:</label>
+    <p-checkbox
+      name="hobbies"
+      value="Reading"
+      formControlName="hobbies"
+    ></p-checkbox>
+    <label for="Reading">Reading</label>
+    <p-checkbox
+      name="hobbies"
+      value="Travelling"
+      formControlName="hobbies"
+    ></p-checkbox>
+    <label for="Travelling">Travelling</label>
+    <p-checkbox
+      name="hobbies"
+      value="Gardening"
+      formControlName="hobbies"
+    ></p-checkbox>
+    <label for="Gardening">Gardening</label>
+  </div>
+
+  <div>
+    <label for="experience">Experience</label>
+    <p-dropdown
+      [options]="experienceOptions"
+      formControlName="experience"
+    ></p-dropdown>
+  </div>
+  
+
+  <div>
+    <label for="employmentStatus">Employment Status</label>
+    <p-toggleButton
+      onLabel="Employed"
+      offLabel="Unemployed"
+      formControlName="employmentStatus"
+    ></p-toggleButton>
+  </div>
+
+  <div>
+    <label class="block font-bold mb-2" for="currency-india">
+        Expected Salary
+    </label>
+    <p-inputnumber formControlName="expected_salary" mode="currency" inputId="currency-india" currency="INR" currencyDisplay="code" locale="en-IN" />
+</div>
+
+  <div>
+    <label for="image">Upload Image</label>
+    <p-fileUpload
+        [customUpload]="true"
+        name="image"
+        accept="image/*"
+        maxFileSize="1000000"
+        (onSelect)="onImageUpload($event)"
+      ></p-fileUpload>
+  </div>
+  <div *ngIf="editform.value.image">
+    <img [src]="editform.value.image" alt="Uploaded Image" width="200" />
+  </div>
+
+
+  <button pButton type="submit" label="Submit"></button>
+  <p-toast></p-toast>
+</form>
+</div>

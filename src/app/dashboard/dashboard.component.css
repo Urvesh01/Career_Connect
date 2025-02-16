@@ -1,0 +1,212 @@
+.container {
+    display: flex;
+    height: 50px;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #ffffffc9;
+  }
+  
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 60px;
+    background: linear-gradient(145deg, #ffffff, #ffffff);
+    border-radius: 20px;
+  }
+  
+  .card .logo img {
+    width: 90px;
+    height: 70px;
+    margin-top: 25px;
+  }
+  .button {
+    text-align: center;
+    background: linear-gradient(to right, #6d61d8, #b1d5fa);
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    width: 200px;
+    height: 55px;
+    font-size: 16px;
+    margin-left: -430px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    border: solid whitesmoke;
+  }
+  button:hover {
+    transform: scale(1.05);
+  }
+  
+
+
+  
+  .p-overlay-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+  }
+  
+  .p-overlay-badge-content {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    background-color: #f5f5f5; 
+    padding: 20px;
+  }
+  
+  .info-card {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 1000px;
+    /* background: linear-gradient(to right, #7f72f4, #b1d5fa); */
+    background-color: #6d61d8; 
+    border-radius: 12px;
+    border: solid whitesmoke;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    font-family: 'Arial', sans-serif;
+    width: 200px;
+    height: 60px;
+  }
+  
+  .info-card h6 {
+    font-size: 16px;
+    margin: 0;
+    font-weight:lighter;
+    color: #ffffff; 
+  }
+  
+  .info-card .value {
+    font-size: 20px;
+    margin: 1px 0 0;
+    font-weight:bolder;
+    color: #000000;
+  }
+  .dataa{
+    margin-top: 25px;
+  }
+
+  .custom-line {
+    width: 100%;
+    height: 3px; 
+    background: linear-gradient(to right, rgba(14, 12, 136, 0), #1749d1, rgba(14, 12, 136, 0));
+    margin-top: -9px;
+  }
+  
+  .custom-line1 {
+    width: 100%;
+    height: 3px; 
+    background: linear-gradient(to right, rgba(14, 12, 136, 0), #1749d1, rgba(14, 12, 136, 0));
+    margin-top: 2px;
+  }
+  .addSubscription {
+    /* text-align: center; */
+    margin-top: 50px;
+  }
+  
+  .p-dialog {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+  }
+  
+  .p-dialog .p-dialog-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #308033; 
+    background: #f9f9f9;
+  }
+  
+  .p-field {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .p-field label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  
+  input,
+  textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    transition: 0.2s;
+  }
+  
+  input:focus,
+  textarea:focus {
+    border-color: #7f72f4;
+    box-shadow: 0 0 5px rgba(0, 120, 189, 0.671);
+  }
+  
+  .error {
+    color: #e53935; /* Red for errors */
+    font-size: 12px;
+    margin-top: 5px;
+
+  }
+  
+  .p-dialog-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  
+  button:disabled {
+    background: #ccc;
+  }
+  
+  .p-button {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .p-button-primary {
+    background-color: #4CAF50;
+    border: none;
+  }
+  
+  .p-button-primary:hover {
+    background-color: #45A049;
+  }
+  
+  .p-button-secondary {
+    color: #ccc;
+    background-color: #ff0000be;
+    border: none;
+  }
+  
+  .p-button-secondary:hover {
+    background-color: #d32f2f;
+  }
+    

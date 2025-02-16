@@ -1,0 +1,115 @@
+<h3 class="centered-title">Sign-Up Form</h3>
+
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <p-floatlabel variant="on">
+    <label for="name">Name :</label>
+    <input appAutoCapitalize pInputText id="name" formControlName="name" />
+    <div
+      *ngIf="
+        signUpForm.controls['name']?.touched &&
+        signUpForm.controls['name']?.hasError('required')
+      "
+    >
+      <span *ngIf="signUpForm.controls['name']?.hasError('required')"
+        >Name is required</span
+      >
+      <span *ngIf="signUpForm.controls['name']?.hasError('maxlength')"
+        >Name is less than 20</span
+      >
+      <span *ngIf="signUpForm.controls['name']?.hasError('minlength')"
+        >Name should be 4 char</span
+      >
+    </div>
+  </p-floatlabel>
+  <p-floatlabel variant="on">
+    <label for="email">Email :</label>
+    <input pInputText id="email" #email formControlName="email" autocomplete="off" (keyup)="checkemail(email.value)" />
+    <div
+      *ngIf="
+        signUpForm.controls['email'].touched &&
+        signUpForm.controls['email'].invalid
+      "
+    >
+      <small *ngIf="signUpForm.controls['email'].hasError('required')"
+        >Email is required</small
+      >
+      <small *ngIf="signUpForm.controls['email'].hasError('email')"
+        >Invalid email format</small
+      >
+      
+    </div>
+  </p-floatlabel>
+
+  <label for="password">Password:</label>
+  <p-floatlabel variant="on">
+    <!-- <label for="password">Password:</label> -->
+    <input
+      pPassword
+      id="password"
+      formControlName="password"
+      autocomplete="off"
+    />
+    <div
+      *ngIf="
+        signUpForm.controls['password'].touched &&
+        signUpForm.controls['password'].invalid
+      "
+    >
+      <small *ngIf="signUpForm.controls['password'].hasError('required')"
+        >Password is required</small
+      >
+      <small *ngIf="signUpForm.controls['password'].hasError('minlength')"
+        >Password must be at least 6 characters</small
+      >
+    </div>
+  </p-floatlabel>
+
+  <label for="rePassword">Confirm Password:</label>
+  <p-floatlabel variant="on">
+    <input
+      pPassword
+      id="rePassword"
+      formControlName="rePassword"
+      autocomplete="off"
+    />
+    <div
+      *ngIf="
+        signUpForm.controls['password'].touched &&
+        signUpForm.controls['password'].invalid
+      "
+    >
+      <small *ngIf="signUpForm.controls['password'].hasError('required')"
+        >Password is required</small
+      >
+      <small *ngIf="signUpForm.controls['password'].hasError('minlength')"
+        >Password must be at least 6 characters</small
+      >
+    </div>
+  </p-floatlabel>
+<ng-container *ngIf="Email_check">
+
+  <button
+    pButton
+    class="otp_button"
+    type="button"
+    label="Send OTP"
+    (click)="sendOtp()"
+  
+  ></button>
+</ng-container>
+
+  <div *ngIf="isOtpSent">
+    <p-floatlabel>
+      <label for="otp">OTP:</label>
+      <input pInputText id="otp" formControlName="otp" autocomplete="off" />
+    </p-floatlabel>
+  </div>
+
+  <button
+  pButton
+  type="submit"
+  label="Submit"
+  [disabled]="signUpForm.invalid"
+  ></button>
+</form>
+<p-toast></p-toast>

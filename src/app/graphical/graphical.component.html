@@ -1,0 +1,21 @@
+<div class="main">
+  <div *ngIf="data" class="chart-container">
+    <h6>Experience</h6>
+    <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+  </div>
+
+  <div *ngIf="genderdata" class="chart-container">
+    <h6>Gender</h6>
+    <p-chart type="pie" [data]="genderdata" [options]="genderoption"></p-chart>
+  </div>
+
+  <div *ngIf="skillsdata" class="chart-container">
+    <h6>Skill</h6>
+    <p-chart type="pie" [data]="skillsdata" [options]="skillsoption"></p-chart>
+  </div>
+
+  <div *ngIf="employmentStatusdata" class="chart-container">
+    <h6>Employment Status</h6>
+    <p-chart type="pie" [data]="employmentStatusdata" [options]="employmentStatusoption"></p-chart>
+  </div>
+</div>

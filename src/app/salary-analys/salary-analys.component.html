@@ -1,0 +1,30 @@
+<p-table [value]="formdata | salarySort: selectedSortOrder">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Date of Birth</th>
+      <th>Mobile Numbers</th>
+      <th>Skills</th>
+      <th>Experience</th>
+      <th>Hobbies</th>
+      <th>Employment Status</th>
+      <th>Expected Salary</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-data>
+    <tr appSubscriptionHighlights >
+      <td>{{ data.name }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.gender }}</td>
+      <td>{{ data.dateOfBirth | date }}</td>
+      <td>{{ data.mobileNumbers.join(", ") }}</td>
+      <td>{{ data.skills.join(", ") }}</td>
+      <td>{{ data.experience }}</td>
+      <td>{{ data.hobbies.join(", ") }}</td>
+      <td>{{ data.employmentStatus ? "Employed" : "Unemployed" }}</td>
+      <td>{{ data.expected_salary }}</td>
+    </tr>
+  </ng-template>
+</p-table>

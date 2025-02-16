@@ -1,0 +1,23 @@
+/* Container for the authentication buttons */
+.contain {
+  display: flex;          
+  justify-content: center; 
+  align-items: center;    
+  height: 30vh;          
+  margin: 0;            
+  margin-top: 100px;    
+}
+
+/* Styles for the login button */
+.loginB {
+  margin-right: 50px;    
+}
+
+/* Main wrapper for authentication layout */
+.main {
+  display: flex;          
+  justify-content: center; 
+  align-items: center;   
+  min-height: 60vh;       
+  flex-direction: column; 
+}

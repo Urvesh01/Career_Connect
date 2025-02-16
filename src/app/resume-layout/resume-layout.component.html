@@ -1,0 +1,35 @@
+<div>
+  <p-panel
+    header="{{ User.name | uppercase }}  "
+    [toggleable]="true"
+    styleClass="resume-panel"
+  >
+    <ng-template pTemplate="content">
+      <div>
+        <p><strong>Email:</strong> {{ User.email }}</p>
+        <p><strong>Gender:</strong> {{ User.gender }}</p>
+        <p><strong>Date of Birth:</strong> {{ User.dateOfBirth | date }}</p>
+        <p>
+          <strong>Mobile Numbers:</strong> {{ User.mobileNumbers.join(", ") }}
+        </p>
+        <p>
+          <strong>Skills:</strong>
+          <p-tag
+            *ngFor="let skill of User.skills"
+            [value]="skill"
+            severity="info"
+            styleClass="skill-tag"
+          >
+          </p-tag>
+        </p>
+        <p><strong>Experience:</strong> {{ User.experience }}</p>
+        <p><strong>Hobbies:</strong> {{ User.hobbies.join(", ") }}</p>
+        <p>
+          <strong>Expected Salary:</strong>
+          {{ User.expected_salary | currency }}
+        </p>
+      </div>
+    </ng-template>
+  </p-panel>
+  <p-button (onClick)="sendMessage()">Select</p-button>
+</div>

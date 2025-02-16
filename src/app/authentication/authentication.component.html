@@ -1,0 +1,15 @@
+<!-- Main container for the authentication buttons -->
+<div class=" main">
+      <div class="contain">
+            <!-- Button to trigger login function -->
+            <p-button class = "loginB"label="Login" (click)="onLogin()"></p-button>
+
+             <!-- Button to trigger logout function -->
+            <p-button label="Logout" (click)="onLogout()"></p-button>
+      </div>
+       <!-- Toast component for displaying success/error messages -->
+      <p-toast></p-toast>
+</div>
+
+<!-- Placeholder for rendering routed components dynamically -->
+<router-outlet></router-outlet>

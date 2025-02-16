@@ -1,0 +1,134 @@
+<div class="contain">
+
+  <h4>Available Subscriptions</h4>
+  <div class="main">
+    <ng-container *ngFor="let subscription of subscriptions">
+      <div class="card pro-card">
+        <p-card class="card1">
+          <h4>{{ subscription.heading }}</h4>
+          <p class="price">Price: ${{ subscription.price }}</p>
+        <p>{{ subscription.description }}</p>
+        <div class="flex gap-4 mt-1">
+          <p-button
+          type="button"
+          (click)="openDialog(subscription)"
+          label="View Details"
+          severity="info"
+          class="w-full"
+          ></p-button>
+        </div>
+      </p-card>
+    </div>
+  </ng-container>
+  
+  <!-- Subscription Details Dialog -->
+  <p-dialog
+  [(visible)]="displayDialog"
+  header="Subscription Details"
+  [modal]="true"
+  [closable]="true"
+  [style]="{ width: '400px' }"
+  (onHide)="closeDialog()"
+  >
+  <ng-container *ngIf="selectedSubscription">
+    <h4>{{ selectedSubscription.heading }}</h4>
+    <p><strong>Price:</strong> ${{ selectedSubscription.price }}</p>
+    <p><strong>Description:</strong> {{ selectedSubscription.description }}</p>
+    <div class="p-dialog-footer flex justify-end gap-2">
+    <ng-container  *ngIf="!isAdmin">
+    <ng-container *ngIf="!(userBuySubscriptionList.includes(selectedSubscription.heading))">
+      <p-button
+      type="button"
+      label="Buy"
+      severity="success"
+      (click)="confirmBuy()"
+      ></p-button>
+    </ng-container>
+      
+   
+    </ng-container>
+    <ng-container  *ngIf="isAdmin">
+      
+      <p-button
+      type="button"
+      (click)="change_price()"
+      label="Change Price"
+      severity="help"
+              class="w-full"
+              ></p-button>
+            </ng-container>
+            <p-button
+            type="button"
+        label="Cancel"
+        severity="secondary"
+        (click)="closeDialog()"
+        ></p-button>
+      </div>
+  </ng-container>
+</p-dialog>
+</div>
+
+<!-- Buy Confirmation Dialog -->
+<p-dialog
+[(visible)]="confirmationDialogVisible"
+header="Confirm Your Purchase"
+[modal]="true"
+[closable]="true"
+[style]="{ width: '400px' }"
+(onHide)="closeConfirmationDialog()"
+>
+<p>Are you sure you want to buy this subscription?</p>
+<div class="p-dialog-footer flex justify-end gap-2">
+  <p-button
+  type="button"
+  label="Confirm"
+  severity="success"
+  (click)="finalizePurchase()"
+  ></p-button>
+  <p-button
+  type="button"
+  label="Cancel"
+  severity="secondary"
+  (click)="closeConfirmationDialog()"
+  ></p-button>
+</div>
+</p-dialog>
+
+
+<p-dialog
+header="Change Price"
+[modal]="true"
+[(visible)]="price_change_visible"
+[style]="{ width: '25rem' }"
+>
+<p>Change price!</p>
+<div class="flex justify-end gap-2">
+  <p-toast></p-toast>
+  <input
+  appAutoCapitalize
+  [(ngModel)]="changeprice"
+  pInputText
+  id="price"
+  />
+    <label for="price"></label>
+    <p-button
+    type="button"
+    pRipple
+    (click)="changeSuccessfull()"
+    label="Done"
+    severity="success"
+    ></p-button>
+    <p-button
+    type="button"
+    pRipple
+    (click)="cancle()"
+    label="Cancel"
+    severity="secondary"
+    ></p-button>
+  </div>
+</p-dialog>
+
+</div>
+
+
+

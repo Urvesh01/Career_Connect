@@ -1,0 +1,22 @@
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    transition: transform 1.5s ease, opacity 1s ease;
+}
+
+.logo-zoomed .logo {
+    transform: scale(2.5);
+}
+
+.logo-wide-zoomed .logo {
+    transform: scale(4) ;
+}

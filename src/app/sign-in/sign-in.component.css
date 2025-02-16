@@ -1,0 +1,110 @@
+.signin-page {
+  width: 400px;
+  padding: 30px;
+  margin: 70px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.centered-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+p-floatlabel {
+  display: block;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+small {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+  text-align: left;
+}
+.otp_button{
+  margin-bottom: 15px;
+}
+label.pass{
+  margin-right: 265px;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #007bff, #4facfe);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+button:disabled {
+  background: #b0c4de;
+  cursor: not-allowed;
+}
+
+.signup-link {
+  margin-top: 15px;
+  font-size: 14px;
+}
+.label{
+  margin-right: 250px;
+}
+
+.signup-link a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.signup-link a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.google-bt{
+  text-align: center;
+  justify-content: center;
+  margin-left: 75px;
+}

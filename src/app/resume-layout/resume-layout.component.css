@@ -1,0 +1,32 @@
+.p-panel {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: #e0f7fa;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #00796b;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin: 5px 0;
+    color: #004d40;
+  }
+  
+  p strong {
+    margin-right: 10px;
+    color: #00796b;
+  }
+  
+  .skill-tag {
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+  

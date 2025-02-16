@@ -1,0 +1,80 @@
+<div class="signin-page">
+  <h3 class="centered-title">Sign-In Form</h3>
+
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <p-floatlabel variant="on">
+      <label for="email">Email:</label>
+      <input pInputText id="email" formControlName="email" autocomplete="off" />
+
+      <div
+        *ngIf="
+          signInForm.controls['email'].touched &&
+          signInForm.controls['email'].invalid
+        "
+      >
+        <small *ngIf="signInForm.controls['email'].hasError('required')"
+          >Email is required</small
+        >
+        <small *ngIf="signInForm.controls['email'].hasError('email')"
+          >Invalid email format</small
+        >
+      </div>
+    </p-floatlabel>
+
+    <label class="pass" for="password">Password:</label>
+    <p-floatlabel variant="on">
+      <input
+        pPassword
+        id="password"
+        formControlName="password"
+        [feedback]="false"
+      />
+
+      <div
+        *ngIf="
+          signInForm.controls['password'].touched &&
+          signInForm.controls['password'].invalid
+        "
+      >
+        <small *ngIf="signInForm.controls['password'].hasError('required')"
+          >Password is required</small
+        >
+        <small *ngIf="signInForm.controls['password'].hasError('minlength')">
+          Password must be at least 6 characters
+        </small>
+      </div>
+    </p-floatlabel>
+
+    <!-- <button
+      pButton
+      class="otp_button"
+      type="button"
+      label="Send OTP"
+      (click)="sendOtp()"
+      [disabled]="isOtpSent"
+    ></button>
+
+    <div *ngIf="isOtpSent">
+      <p-floatlabel>
+        <label for="otp">OTP:</label>
+        <input pInputText id="otp" formControlName="otp" autocomplete="off" />
+      </p-floatlabel>
+    </div> -->
+
+    <button
+      pButton
+      type="submit"
+      label="Sign In"
+      [disabled]="signInForm.invalid"
+    ></button>
+
+    <div class="signup-link">
+      <p>You are new? <a routerLink="/auth/signup">Go to signup page</a></p>
+    </div>
+  </form>
+
+  ------------------------------------------------------------------------------------------------
+<div id="google-signin-btn" class="google-bt" ></div>
+
+  <p-toast></p-toast>
+</div>

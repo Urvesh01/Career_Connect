@@ -1,0 +1,87 @@
+<!-- Form for filtering users based on employment status -->
+
+<form class="main" [formGroup]="analysisForm" (ngSubmit)="onSearch()">
+  <div>
+    <label for="employmentStatus">Employment Status : </label>
+    <p-dropdown
+      [options]="employmentStatus"
+      formControlName="employmentStatusvalue"
+    ></p-dropdown>
+    <button pButton type="submit" label="Search"></button>
+  </div>
+</form>
+<br />
+<br />
+<div>
+  <!-- Dropdown for filtering users based on experience -->
+  <label for="experience">Experience :</label>
+  <p-dropdown
+    [options]="experienceOptions"
+    [(ngModel)]="experienceData"
+  ></p-dropdown>
+  <button pButton type="submit" label="Search" (click)="onSubmit()"></button>
+</div>
+<br />
+<br />
+<!-- Dropdown for sorting users based on salary -->
+<div>
+  <label for="sortOrder">Sort by Salary:</label>
+  <p-dropdown
+    [options]="sortOptions"
+    formControlName="sortOrder"
+    (onChange)="onSortChange($event)"
+  >
+  </p-dropdown>
+</div>
+<br />
+<br />
+<br />
+<!-- Button to navigate to graphical analysis -->
+<div>
+  <label>Data Analysis with Graphical : </label>
+  <button pButton label="Graphical View" (click)="viewgraph()"></button>
+</div>
+
+<!-- User filter component with selected status -->
+<app-user-filter
+  [selectedStatus]="selectedStatus"
+  (filteredUsers)="onFilteredUsers($event)"
+></app-user-filter>
+
+<!-- Display table if users are filtered -->
+<div *ngIf="check">
+  <div>
+    <h4>Number of User : {{ number_of_user }}</h4>
+  </div>
+  <!-- Table displaying user details -->
+  <p-table [value]="users">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Date of Birth</th>
+        <th>Mobile Numbers</th>
+        <th>Skills</th>
+        <th>Experience</th>
+        <th>Hobbies</th>
+        <th>Employment Status</th>
+        <th>Expected Salary</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr appSubscriptionHighlights>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.dateOfBirth | date }}</td>
+        <td>{{ user.mobileNumbers.join(", ") }}</td>
+        <td>{{ user.skills.join(", ") }}</td>
+        <td>{{ user.experience }}</td>
+        <td>{{ user.hobbies.join(", ") }}</td>
+        <td>{{ user.employmentStatus ? "Employed" : "Unemployed" }}</td>
+        <td>{{ user.expected_salary }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

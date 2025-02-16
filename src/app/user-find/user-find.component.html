@@ -1,0 +1,30 @@
+
+<div *ngIf="flag">
+  <div>
+    <h4>Number of User : {{ number_of_user }}</h4>
+  </div>
+  <p-table [value]="filteredUsers">
+    <ng-template pTemplate="header">
+      <tr >
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Experience</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr appSubscriptionHighlights>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.experience }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+
+
+
+
+

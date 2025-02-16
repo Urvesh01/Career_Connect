@@ -1,0 +1,140 @@
+
+.main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;  
+  gap: 20px;  
+  justify-content: flex-start; 
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+.slide-in {
+  animation: slideIn 1s ease-out;
+}
+
+
+
+.card1 h4 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.card1 .price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card1 p {
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+
+.card {
+  position: relative;
+  gap: auto;
+  margin: 20px;
+  width: 100%;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(9, 6, 199, 0.027), rgba(15, 63, 196, 0.5));
+  box-shadow: 0 4px 8px rgba(15, 63, 196, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform-style: preserve-3d;
+  animation: fadeIn 1s ease-in; 
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+.card:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Dialog container */
+.p-dialog {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+/* Dialog Header */
+.p-dialog-header {
+  background-color: #007bff;
+  color: white;
+  font-size: 1.25rem;
+  padding: 15px 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Dialog Body */
+.p-dialog .p-dialog-content {
+  padding: 20px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Input Styling */
+#price {
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+/* Input Label */
+label[for="price"] {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Button Styling */
+.p-button {
+  width: 100px;
+  height: 35px;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.p-button-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.p-button-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+/* Button Hover Effects */
+.p-button-success:hover {
+  background-color: #218838;
+}
+
+.p-button-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Toast Styling */
+.p-toast {
+  background-color: #28a745;
+  color: white;
+  font-size: 0.9rem;
+}
+
