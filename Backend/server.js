@@ -14,14 +14,16 @@ app.use(cors());
 app.use(bodyParser.json());
 let otpStore = {};
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const CLIENT_ID = process.env.CLIENT__ID;
+
+const CLIENT_SECRET = process.env.CLIENT__SECRET;
 
 const client = new OAuth2Client(CLIENT_ID);
 
 app.post('/auth/google-verify', async (req, res) => {
   try {
     const { token } = req.body;
+    console.log(CLIENT_ID)
     const ticket = await client.verifyIdToken({
       idToken: token,
       audience: CLIENT_ID,

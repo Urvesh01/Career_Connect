@@ -8,20 +8,8 @@
 
 
 
-/Backend/node_modules
+Backend/node_modules
 node_modules
-
-
-
-
-
-/.angular/cache
-.sass-cache/
-/connect.lock
-/libpeerconnection.log
-/coverage
-testem.log
-/typings
 
 
 db.json
