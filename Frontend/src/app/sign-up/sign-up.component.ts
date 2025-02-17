@@ -25,7 +25,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { ReCAPTCHAService } from '../services/Backend.service';
 import { AutoCapitalizeDirective } from '../Directive/auto-capitalize.directive';
-import * as bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcrypt';
 declare var google: any;
 @Component({
   selector: 'app-sign-up',

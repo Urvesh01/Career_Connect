@@ -52,6 +52,7 @@
     "@angular/cli": "^19.1.7",
     "@angular/compiler-cli": "^19.0.0",
     "@igniteui/angular-schematics": "~19.0.1430",
+    "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/hammerjs": "^2.0.40",
     "@types/jasmine": "~5.1.0",
