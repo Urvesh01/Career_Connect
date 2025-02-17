@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../environment/environment' 
-
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject, Observable } from "rxjs";
+import { environment } from "../../environments/environment";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class FormDataService {
   private apiUrl = environment.API_URL;
   private cloudinaryUrl = environment.CLOUDINARY_URL;
-  private uploadPreset = environment.UPLOAD_PRESET; 
+  private uploadPreset = environment.UPLOAD_PRESET;
 
   public isLoggin = new BehaviorSubject<any>(false);
   public isLoggin$ = this.isLoggin.asObservable();
@@ -27,9 +26,7 @@ export class FormDataService {
   public isAdmin = new BehaviorSubject<any>(false);
   public isAdmin$ = this.isAdmin.asObservable();
 
-
   constructor(private http: HttpClient) {}
-
 
   addUser(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/users`, user);
@@ -89,21 +86,24 @@ export class FormDataService {
 
   uploadImage(file: File): Observable<any> {
     const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', this.uploadPreset); 
+    formData.append("file", file);
+    formData.append("upload_preset", this.uploadPreset);
 
     return this.http.post(this.cloudinaryUrl, formData);
   }
-  
-  setSubscription(userId: any, value: boolean,subscriptionData: any): Observable<any> {
+
+  setSubscription(
+    userId: any,
+    value: boolean,
+    subscriptionData: any
+  ): Observable<any> {
     return this.http.patch(`${this.apiUrl}/users/${userId}`, {
       subscription: value,
-      subscriptionName : subscriptionData
+      subscriptionName: subscriptionData,
     });
   }
 
-
-  public selectedSortOrder = new BehaviorSubject<any>('null');
+  public selectedSortOrder = new BehaviorSubject<any>("null");
   public selectedSortOrder$ = this.selectedSortOrder.asObservable();
   sendData(data: any) {
     this.selectedUser.next(data);
