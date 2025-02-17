@@ -2,8 +2,8 @@
 
 
 
-
-Frontend/src/environment
+Frontend/src/environments/environment.prod.ts
+Frontend/src/environments/environment.ts
 /Backend/.env
 
 

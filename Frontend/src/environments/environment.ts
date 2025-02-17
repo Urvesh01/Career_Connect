@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   CLOUDINARY_URL: "https://api.cloudinary.com/v1_1/dc4aobtkq/image/upload",
   UPLOAD_PRESET: "CareerConnect",
   API_URL: "http://localhost:3000",
