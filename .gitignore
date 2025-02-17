@@ -3,14 +3,14 @@
 
 
 
-/src/environment
+Frontend/src/environment
 /Backend/.env
 
 
 
 Backend/node_modules
-node_modules
+Frontend/node_modules
 
 
-db.json
+Frontend/db.json
 
