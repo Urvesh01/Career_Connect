@@ -118,7 +118,7 @@ export class SignInComponent {
     const emailControl = this.signInForm.get("email");
     if (emailControl) {
       const email = emailControl.value as string;
-      if (email.includes("srkay.com")) {
+      if (email.includes("urveshpatel7100@gmail.com")) {
         this.formDataService
           .updateUserLoginStatus(id, true, true, this.sessionId)
           .subscribe(

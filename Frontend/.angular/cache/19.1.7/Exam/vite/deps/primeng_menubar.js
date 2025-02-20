@@ -10,10 +10,6 @@ import {
 } from "./chunk-LPPO5H5T.js";
 import "./chunk-5G7WYC4N.js";
 import {
-  Badge,
-  BadgeModule
-} from "./chunk-3PZHXUOF.js";
-import {
   AngleDownIcon,
   AngleRightIcon,
   BarsIcon
@@ -23,6 +19,10 @@ import {
   RouterLinkActive,
   RouterModule
 } from "./chunk-KG7VPGUR.js";
+import {
+  Badge,
+  BadgeModule
+} from "./chunk-3PZHXUOF.js";
 import {
   BaseComponent
 } from "./chunk-VDXHTXHJ.js";
@@ -123,8 +123,8 @@ import {
   ɵɵtextInterpolate1,
   ɵɵviewQuery
 } from "./chunk-LZGPYKNY.js";
-import "./chunk-BDPS6ZGI.js";
 import "./chunk-6DOJV2XM.js";
+import "./chunk-BDPS6ZGI.js";
 import {
   Subject,
   debounce,

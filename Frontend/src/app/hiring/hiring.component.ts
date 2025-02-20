@@ -141,8 +141,6 @@ export class HiringComponent implements OnInit {
   }
 
   select(data: any) {
-    console.log('--------', data);
-    // const checkId = localStorage.getItem('isLoggedIn');
     this.formDataService.getUsers().subscribe((user) => {
       user.find((u) => {
         if (u.email === data) {

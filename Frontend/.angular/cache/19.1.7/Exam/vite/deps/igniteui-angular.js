@@ -1,4 +1,12 @@
 import {
+  AnimationBuilder,
+  animate,
+  animation,
+  keyframes,
+  style,
+  useAnimation
+} from "./chunk-4SPJ4EMV.js";
+import {
   DefaultValueAccessor,
   EmailValidator,
   FormControl,
@@ -23,14 +31,6 @@ import {
   RequiredValidator,
   Validators
 } from "./chunk-6EFZL56Z.js";
-import {
-  AnimationBuilder,
-  animate,
-  animation,
-  keyframes,
-  style,
-  useAnimation
-} from "./chunk-4SPJ4EMV.js";
 import {
   DomSanitizer,
   EventManager,
@@ -192,13 +192,13 @@ import {
   ɵɵtwoWayProperty,
   ɵɵviewQuery
 } from "./chunk-LZGPYKNY.js";
+import "./chunk-6DOJV2XM.js";
 import {
   NEVER,
   animationFrameScheduler,
   fromEvent,
   merge
 } from "./chunk-BDPS6ZGI.js";
-import "./chunk-6DOJV2XM.js";
 import {
   BehaviorSubject,
   Observable,

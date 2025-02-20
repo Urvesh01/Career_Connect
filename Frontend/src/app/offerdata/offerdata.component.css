@@ -20,19 +20,30 @@
 .card1 h4 {
   font-size: 1.5em;
   margin-bottom: 10px;
+  color: #047857;
+  font-weight: bolder;
 }
 
 .card1 .price {
   font-weight: bold;
   margin-bottom: 10px;
 }
-
+.card1 h6{
+  color: #B91C1C;
+}
 .card1 p {
   line-height: 1.5;
   margin-bottom: 20px;
 }
 
+h4{
+   font-size: 2.5rem;  /* Large and readable */
+    font-weight: bold;  /* Emphasizes importance */
+    color: #0d2a79;  /* Dark blue for a professional look */
+    text-align: center;  /* Centers the heading */
+    margin-bottom: 20px;
 
+}
 .card {
   position: relative;
   gap: auto;

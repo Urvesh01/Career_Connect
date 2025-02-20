@@ -25,6 +25,7 @@ import { WhatsAppMessageService } from '../services/whats-app-message.service';
 export class ResumeLayoutComponent {
   User!: any;
   userNo!: any;
+  user!: any;
   constructor(
     private formDataService: FormDataService,
     private route: ActivatedRoute,
@@ -41,6 +42,10 @@ export class ResumeLayoutComponent {
   }
 
   sendMessage() {
+    this.formDataService.getUsers().subscribe((users) => { 
+      this.user = users.find((user) => this.User.email == user.email);
+    });
+    this.formDataService.setUserVisible(this.user.id, true).subscribe(() => {});
     this.userNo = this.User.mobileNumbers;
     console.log(this.userNo);
     const toPhoneNumber = `+91${this.userNo}`;
