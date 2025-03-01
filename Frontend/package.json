@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "prebuild": "chmod +x node_modules/.bin/ng",
-     "start": "ng serve",
+    "start": "ng serve",
     "build": "npx ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -28,6 +28,7 @@
     "@primeng/themes": "^19.0.5",
     "@types/gapi.auth2": "^0.0.61",
     "bcrypt": "^5.1.1",
+    "bcrypt-ts": "^6.0.0",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.4.7",
     "dotenv": "^16.4.7",

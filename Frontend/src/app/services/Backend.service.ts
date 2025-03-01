@@ -1,21 +1,45 @@
 import { environment } from '../../environments/environment';
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, NgZone } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 declare var google: any;
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ReCAPTCHAService {
   public userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
+
+  private slowNetworkSubject = new BehaviorSubject<boolean>(false);
+  slowNetwork$ = this.slowNetworkSubject.asObservable();
+
   private clientId: string = environment.CLIENT_ID;
   private backendUrl = environment.BACKEND_URL;
-  public router=inject(Router)
-  constructor(private http: HttpClient) {
+  public router = inject(Router);
+  constructor(private http: HttpClient, private ngZone: NgZone) {
     this.initializeGoogleSignIn();
+    this.checkNetworkSpeed();
+  }
+
+  private checkNetworkSpeed() {
+    if ("connection" in navigator) {
+      const connection = (navigator as any).connection;
+      this.updateNetworkStatus(connection);
+
+      connection.addEventListener("change", () => {
+        this.ngZone.run(() => this.updateNetworkStatus(connection));
+      });
+    }
+  }
+
+  private updateNetworkStatus(connection: any) {
+    // If the effective type is 'slow-2g' or '2g', it's considered slow
+    const isSlow =
+      connection.effectiveType === "slow-2g" ||
+      connection.effectiveType === "2g";
+    this.slowNetworkSubject.next(isSlow);
   }
   private initializeGoogleSignIn() {
     google.accounts.id.initialize({
@@ -25,20 +49,22 @@ export class ReCAPTCHAService {
   }
   private handleCredentialResponse(response: any) {
     const jwtToken = response.credential;
-    console.log('JWT Token from Google:', jwtToken);
+    console.log("JWT Token from Google:", jwtToken);
 
     this.verifyGoogleToken(jwtToken);
   }
   verifyGoogleToken(token: string) {
-    this.http.post(`${this.backendUrl}/auth/google-verify`, { token }).subscribe(
-      (res) => {
-        console.log('Verified User:', res);
-        this.userSubject.next(res);
-      },
-      (error) => {
-        console.error('Token verification failed:', error);
-      }
-    );
+    this.http
+      .post(`${this.backendUrl}/auth/google-verify`, { token })
+      .subscribe(
+        (res) => {
+          console.log("Verified User:", res);
+          this.userSubject.next(res);
+        },
+        (error) => {
+          console.error("Token verification failed:", error);
+        }
+      );
   }
 
   verifyRecaptcha(token: string): Observable<any> {
