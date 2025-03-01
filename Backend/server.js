@@ -10,13 +10,11 @@ const app = express();
 const PORT = 5000;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
 app.use(bodyParser.json());
 let otpStore = {};
-
+const API_BASE_URL = "https://careerconnect-4jyo8zt96-urveshs-projects-50c5bbce.vercel.app"
 const CLIENT_ID = '523576895612-9kc3h4oq6hedhq2088jroe29heeqqv6n.apps.googleusercontent.com';
-
-const CLIENT_SECRET = process.env.CLIENT__SECRET;
 
 const client = new OAuth2Client(CLIENT_ID);
 
@@ -44,7 +42,7 @@ app.post('/auth/google-verify', async (req, res) => {
   }
 });
 
-app.post("/send-otp", async (req, res) => {
+app.post(`${API_BASE_URL}/send-otp`, async (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ message: "Email is required" });
 
