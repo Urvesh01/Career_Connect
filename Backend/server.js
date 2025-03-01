@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 let otpStore = {};
 
-const CLIENT_ID = process.env.CLIENT__ID;
+const CLIENT_ID = '523576895612-9kc3h4oq6hedhq2088jroe29heeqqv6n.apps.googleusercontent.com';
 
 const CLIENT_SECRET = process.env.CLIENT__SECRET;
 
@@ -54,8 +54,8 @@ app.post("/send-otp", async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER, 
-      pass: process.env.EMAIL_PASS, 
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
@@ -92,7 +92,7 @@ app.post("/send-otp", async (req, res) => {
 app.post('/verify-otp', (req, res) => {
   const { email, otp } = req.body;
   if (otpStore[email] && otpStore[email] == otp) {
-    delete otpStore[email]; 
+    delete otpStore[email];
     return res.json({ message: 'OTP verified successfully' });
   }
   res.status(400).json({ message: 'Invalid or expired OTP' });
