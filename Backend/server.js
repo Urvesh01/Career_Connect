@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
@@ -7,13 +6,13 @@ const nodemailer = require('nodemailer');
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
+
 
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:4200', credentials: true }));
 app.use(bodyParser.json());
 let otpStore = {};
-const API_BASE_URL = "https://careerconnect-4jyo8zt96-urveshs-projects-50c5bbce.vercel.app"
 const CLIENT_ID = '523576895612-9kc3h4oq6hedhq2088jroe29heeqqv6n.apps.googleusercontent.com';
 
 const client = new OAuth2Client(CLIENT_ID);
@@ -42,7 +41,7 @@ app.post('/auth/google-verify', async (req, res) => {
   }
 });
 
-app.post(`${API_BASE_URL}/send-otp`, async (req, res) => {
+module.exports  = app.post('/send-otp', async (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ message: "Email is required" });
 
@@ -120,4 +119,4 @@ app.post("/verify-recaptcha", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;
