@@ -41,7 +41,7 @@ app.post('/auth/google-verify', async (req, res) => {
   }
 });
 
-module.exports  = app.post('/send-otp', async (req, res) => {
+app.post('/send-otp', async (req, res) => {
   const { email } = req.body;
   if (!email) return res.status(400).json({ message: "Email is required" });
 
